@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Web Dev Bootcamp</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Segoe UI, sans-serif;
+}
+
+body{
+background:#f4f6f9;
+color:#333;
+}
+
+/* NAVBAR */
+
+nav{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 8%;
+background:#ffffff;
+box-shadow:0 3px 12px rgba(0,0,0,0.08);
+}
+
+.logo{
+font-size:24px;
+font-weight:bold;
+color:#2c3e50;
+}
+
+nav ul{
+display:flex;
+gap:25px;
+list-style:none;
+}
+
+nav a{
+text-decoration:none;
+color:#444;
+font-weight:500;
+}
+
+nav a:hover{
+color:#4a6cf7;
+}
+
+/* HERO */
+
+.hero{
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:70px 8%;
+flex-wrap:wrap;
+background:linear-gradient(to right,#eef2f7,#ffffff);
+}
+
+.hero-text{
+max-width:520px;
+}
+
+.hero-text h1{
+font-size:44px;
+margin-bottom:18px;
+color:#1f2d3d;
+}
+
+.hero-text p{
+line-height:1.6;
+margin-bottom:25px;
+color:#555;
+}
+
+.btn{
+display:inline-block;
+padding:13px 28px;
+background:#4a6cf7;
+color:white;
+border-radius:8px;
+text-decoration:none;
+font-weight:600;
+transition:0.3s;
+}
+
+.btn:hover{
+background:#2e4ed8;
+}
+
+.hero img{
+width:450px;
+max-width:100%;
+border-radius:12px;
+box-shadow:0 10px 25px rgba(0,0,0,0.1);
+}
+
+/* FEATURES */
+
+.features{
+padding:70px 8%;
+text-align:center;
+}
+
+.features h2{
+font-size:34px;
+margin-bottom:40px;
+color:#1f2d3d;
+}
+
+.feature-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+gap:30px;
+}
+
+.feature-card{
+background:#ffffff;
+padding:30px;
+border-radius:12px;
+box-shadow:0 5px 20px rgba(0,0,0,0.07);
+transition:0.3s;
+}
+
+.feature-card:hover{
+transform:translateY(-6px);
+}
+
+.feature-card img{
+width:70px;
+margin-bottom:15px;
+}
+
+.feature-card h3{
+margin-bottom:10px;
+}
+
+/* COURSE PREVIEW */
+
+.preview{
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:70px 8%;
+flex-wrap:wrap;
+background:#eef2f7;
+}
+
+.preview img{
+width:420px;
+border-radius:12px;
+box-shadow:0 10px 25px rgba(0,0,0,0.1);
+}
+
+.preview-text{
+max-width:520px;
+}
+
+.preview-text h2{
+font-size:34px;
+margin-bottom:15px;
+}
+
+.preview-text p{
+line-height:1.6;
+margin-bottom:20px;
+}
+
+/* CTA */
+
+.cta{
+text-align:center;
+padding:70px 20px;
+background:#2c3e50;
+color:white;
+}
+
+.cta h2{
+margin-bottom:20px;
+font-size:32px;
+}
+
+/* FOOTER */
+
+footer{
+text-align:center;
+padding:18px;
+background:#111;
+color:#bbb;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:768px){
+
+.hero,
+.preview{
+flex-direction:column;
+text-align:center;
+}
+
+.hero img,
+.preview img{
+margin-top:30px;
+}
+
+nav ul{
+display:none;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav>
+<div class="logo">CodeBootcamp</div>
+
+<ul>
+<li><a href="#">Home</a></li>
+<li><a href="#">Curriculum</a></li>
+<li><a href="#">About</a></li>
+<li><a href="#">Contact</a></li>
+</ul>
+</nav>
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div class="hero-text">
+<h1>Master Web Development</h1>
+<p>
+Join our immersive Web Development Bootcamp and learn to build modern
+websites and applications using HTML, CSS, JavaScript and React.
+</p>
+
+<a href="#" class="btn">Start Learning</a>
+</div>
+
+<img src="https://images.unsplash.com/photo-1518770660439-4636190af475">
+
+</section>
+
+<!-- FEATURES -->
+
+<section class="features">
+
+<h2>What You Will Learn</h2>
+
+<div class="feature-grid">
+
+<div class="feature-card">
+<img src="https://cdn-icons-png.flaticon.com/512/732/732212.png">
+<h3>HTML5</h3>
+<p>Create structured and semantic web pages.</p>
+</div>
+
+<div class="feature-card">
+<img src="https://cdn-icons-png.flaticon.com/512/732/732190.png">
+<h3>CSS3</h3>
+<p>Design responsive and beautiful layouts.</p>
+</div>
+
+<div class="feature-card">
+<img src="https://cdn-icons-png.flaticon.com/512/5968/5968292.png">
+<h3>JavaScript</h3>
+<p>Add interactivity and dynamic features.</p>
+</div>
+
+<div class="feature-card">
+<img src="https://cdn-icons-png.flaticon.com/512/5968/5968672.png">
+<h3>React</h3>
+<p>Build modern frontend applications.</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- COURSE PREVIEW -->
+
+<section class="preview">
+
+<img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c">
+
+<div class="preview-text">
+
+<h2>Build Real Projects</h2>
+
+<p>
+During the bootcamp you will create real-world projects like
+portfolio websites, dashboards and full web apps to strengthen
+your developer portfolio.
+</p>
+
+<a href="#" class="btn">View Curriculum</a>
+
+</div>
+
+</section>
+
+<!-- CTA -->
+
+<section class="cta">
+
+<h2>Start Your Developer Journey Today 🚀</h2>
+<a href="#" class="btn">Join Bootcamp</a>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+<p>© 2026 CodeBootcamp | All Rights Reserved</p>
+</footer>
+
+</body>
+</html>
