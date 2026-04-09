@@ -1,0 +1,151 @@
+#include <stdio.h>
+#include <string.h>
+
+#define MAX 5
+
+// Structure
+struct Contact {
+    char name[50];
+    char phone[15];
+};
+
+struct Contact contacts[MAX];
+int count = 0;
+
+// Add contact
+void addContact() {
+    if (count == MAX) {
+        printf("Contact list is full!\n");
+        return;
+    }
+
+    printf("Enter Name: ");
+    scanf("%s", contacts[count].name);
+
+    printf("Enter Phone: ");
+    scanf("%s", contacts[count].phone);
+
+    count++;
+}
+
+// Sort contacts alphabetically
+void sortContacts() {
+    struct Contact temp;
+
+    for (int i = 0; i < count - 1; i++) {
+        for (int j = i + 1; j < count; j++) {
+            if (strcmp(contacts[i].name, contacts[j].name) > 0) {
+                temp = contacts[i];
+                contacts[i] = contacts[j];
+                contacts[j] = temp;
+            }
+        }
+    }
+
+    printf("Contacts sorted successfully!\n");
+}
+
+// Display contacts
+void displayContacts() {
+    if (count == 0) {
+        printf("No contacts available.\n");
+        return;
+    }
+
+    printf("\nContact List:\n");
+    for (int i = 0; i < count; i++) {
+        printf("%s - %s\n", contacts[i].name, contacts[i].phone);
+    }
+}
+
+// Binary search
+void searchContact() {
+    char key[50];
+    int low = 0, high = count - 1, mid;
+
+    printf("Enter name to search: ");
+    scanf("%s", key);
+
+    while (low <= high) {
+        mid = (low + high) / 2;
+
+        int cmp = strcmp(contacts[mid].name, key);
+
+        if (cmp == 0) {
+            printf("Contact Found: %s - %s\n",
+                   contacts[mid].name, contacts[mid].phone);
+            return;
+        } else if (cmp < 0) {
+            low = mid + 1;
+        } else {
+            high = mid - 1;
+        }
+    }
+
+    printf("Contact not found.\n");
+}
+
+// Main
+int main() {
+    int choice;
+
+    do {
+        printf("\n--- Contact Book Menu ---\n");
+        printf("1. Add Contact\n");
+        printf("2. Display Contacts\n");
+        printf("3. Sort Contacts\n");
+        printf("4. Search Contact\n");
+        printf("5. Exit\n");
+
+        printf("Enter choice: ");
+        scanf("%d", &choice);
+
+        switch (choice) {
+            case 1: addContact(); break;
+            case 2: displayContacts(); break;
+            case 3: sortContacts(); break;
+            case 4: searchContact(); break;
+            case 5: printf("Exiting...\n"); break;
+            default: printf("Invalid choice!\n");
+        }
+
+    } while (choice != 5);
+
+    return 0;
+}
+
+### Output
+--- Contact Book Menu ---
+1. Add Contact
+2. Display Contacts
+3. Sort Contacts
+4. Search Contact
+5. Exit
+Enter choice: 1
+Enter Name: Rahul
+Enter Phone: 99999
+
+Enter choice: 1
+Enter Name: Amit
+Enter Phone: 88888
+
+Enter choice: 1
+Enter Name: Sneha
+Enter Phone: 77777
+
+Enter choice: 3
+Contacts sorted successfully!
+
+Enter choice: 2
+
+Contact List:
+Amit - 88888
+Rahul - 99999
+Sneha - 77777
+
+Enter choice: 4
+Enter name to search: Rahul
+Contact Found: Rahul - 99999
+
+Enter choice: 5
+Exiting...
