@@ -1,0 +1,83 @@
+#include <stdio.h>
+#include <string.h>
+
+#define MAX 5
+
+char stack[MAX][100];
+int top = -1;
+
+// Push (visit new page)
+void visit() {
+    if (top == MAX - 1) {
+        printf("History is full!\n");
+        return;
+    }
+
+    char url[100];
+    printf("Enter URL: ");
+    scanf("%s", url);
+
+    strcpy(stack[++top], url);
+    printf("Visited: %s\n", url);
+}
+
+// Pop (go back)
+void goBack() {
+    if (top == -1) {
+        printf("No history available.\n");
+        return;
+    }
+
+    printf("Going back from: %s\n", stack[top--]);
+}
+
+// Peek (current page)
+void currentPage() {
+    if (top == -1) {
+        printf("No current page.\n");
+    } else {
+        printf("Current Page: %s\n", stack[top]);
+    }
+}
+
+// Display history
+void display() {
+    if (top == -1) {
+        printf("No history.\n");
+        return;
+    }
+
+    printf("Browser History:\n");
+    for (int i = top; i >= 0; i--) {
+        printf("%s\n", stack[i]);
+    }
+}
+
+// Main
+int main() {
+    int choice;
+
+    do {
+        printf("\n--- Browser Menu ---\n");
+        printf("1. Visit Page\n");
+        printf("2. Go Back\n");
+        printf("3. Current Page\n");
+        printf("4. Display History\n");
+        printf("5. Exit\n");
+
+        printf("Enter choice: ");
+        scanf("%d", &choice);
+
+        switch (choice) {
+            case 1: visit(); break;
+            case 2: goBack(); break;
+            case 3: currentPage(); break;
+            case 4: display(); break;
+            case 5: printf("Exiting...\n"); break;
+            default: printf("Invalid choice!\n");
+        }
+
+    } while (choice != 5);
+
+    return 0;
+}
