@@ -1,0 +1,40 @@
+class TaskManager:
+    def __init__(self):
+        self.undo_stack = []
+        self.redo_stack = []
+        self.current_tasks = []
+
+    def add_task(self, task):
+        self.current_tasks.append(task)
+        self.undo_stack.append(('add', task))
+        self.redo_stack.clear() # Clear redo stack on new action
+        print(f"Added: {task}")
+
+    def undo(self):
+        if not self.undo_stack:
+            return "Nothing to undo"
+        
+        action, task = self.undo_stack.pop()
+        self.redo_stack.append((action, task))
+        
+        if action == 'add':
+            self.current_tasks.remove(task)
+            print(f"Undo Add: {task}")
+
+    def redo(self):
+        if not self.redo_stack:
+            return "Nothing to redo"
+        
+        action, task = self.redo_stack.pop()
+        self.undo_stack.append((action, task))
+        
+        if action == 'add':
+            self.current_tasks.append(task)
+            print(f"Redo Add: {task}")
+
+# Usage
+tm = TaskManager()
+tm.add_task("Buy Milk")
+tm.add_task("Clean Room")
+tm.undo()        # Undoes "Clean Room"
+tm.redo()        # Redoes "Clean Room"
